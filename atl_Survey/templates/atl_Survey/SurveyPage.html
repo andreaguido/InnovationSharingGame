@@ -1,0 +1,28 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <p>
+       <b>Merci de remplir ce questionnaire afin de connaitre votre résultat.</b>
+
+    </p>
+
+    <p>
+        {% formfield player.check_partners %}
+        {% formfield player.check_matching %}
+        {% formfield player.check_understanding_incentives %}
+        {% formfield player.check_patterns %}
+        {% formfield player.sex %}
+        {% formfield player.student %}
+        {% formfield player.field_of_studies %}
+        {% formfield player.comments %}
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

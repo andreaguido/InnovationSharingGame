@@ -1,0 +1,133 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+<style>
+
+
+.page-header {
+    padding-top: 20px;
+}
+
+#box1, #box2{
+    position:relative;
+    display: inline-block;
+    width:160px;
+    left:250px;
+    padding:20px;
+    margin:10px;
+    border: 1px solid black;
+    text-align:center;
+    border-radius: 10px;
+}
+
+#box3 {
+
+    position:relative;
+    width:900px;
+    right:20px;
+    padding:20px;
+    border: 0px solid black;
+    text-align:center;
+}
+
+#box11, #box21{
+    position:relative;
+    display: inline-block;
+    width:auto;
+    border: 0px solid black;
+
+}
+
+#super_box{
+    position:relative;
+    bottom:00px;
+    width:900px;
+    left: 50px;
+    height:300px;
+    padding:10px;
+    background-color: #ffffff;
+    border: 0px solid black;
+    border-radius: 30px;
+
+}
+
+div.transbox{
+margin:30px;
+margin-left:60px;
+margin-right:60px;
+padding:30px;
+background-color: #ffffff;
+border: 0px solid black;
+border-radius: 10px;
+opacity:0.6;
+filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+#next_button {
+    position:relative;
+    bottom:0px;
+    left:43%;
+}
+
+</style>
+
+<script>
+    function sharingdecision(ciao){
+        document.getElementById("id_share_decision").value= ciao;
+    }
+
+    function get_value_form(sharedecision) {
+      document.getElementById("id_share_decision").value = sharedecision;
+    }
+
+
+</script>
+{% endblock %}
+
+{% block title %}
+<center>Résultats Finaux</center>
+{% endblock %}
+
+{% block content %}
+
+<div id="super_box">
+<div id="box1">
+    <div id="box10">
+        <b>Votre Score Cumulé</b>
+    </div>
+    <div id="box11">
+        {{ cumulated_score }}
+    </div>
+</div>
+<div id="box2">
+    <div id="box20">
+        <b>Votre Rang Final</b>
+    </div>
+    <div id="box21">
+        {{ rank }}
+    </div>
+</div>
+<div id="box3">
+        <b>Player ID</b>: {{ ID }} <b>Session</b>: {{ session }} <br>
+    {% if paid  == 1 %}
+    Félicitations, l'ordinateur vous a sélectionné(e) pour être rémunéré(e) pour cette expérience. <br>
+    <b>Prenez une photo ou imprimez cette page afin de pouvoir recuperer vos gains. <br>
+    Pour récupérer vos gains, merci de vous présenter (muni d'une pièce d'identité et de cette page) au Laboratoire d'Economie
+    Expérimentale de Montpellier (LEEM) le lundi 20 mai (de 9h00 à 16h00) ou le mardi 21 mai (de 9h00 à 12h00). <br></b>
+    Le LEEM est situé à l'adresse suivante: <br>
+<font size=2>
+    Salle 216 (2ème étage) <br>
+    Faculté des Sciences Economiques <br>
+    Espace Richter - Avenue de la Mer <br>
+    CS 79606 <br>
+    34960 MONTPELLIER cedex 2 <br>
+</font>
+    {% else %}
+    Désolé, l'ordinateur ne vous a pas sélectionné pour être rémunéré pour cette expérience. <br>
+    {% endif %}
+</div>
+    <button id="next_button" class="btn btn-primary btn-large">Suivant</button>
+</div>
+{% endblock %}
+
+
