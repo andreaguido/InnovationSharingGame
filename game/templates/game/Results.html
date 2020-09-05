@@ -1,0 +1,197 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+<style>
+.grid-container {
+    position:relative;
+    top:70px;
+  display: grid;
+  width:806px;
+  grid-template-columns: 400px 400px ;
+  grid-gap: 3px;
+  background-color: #999;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.grid-container > div {
+
+  text-align: center;
+  padding: 5px 0;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.item1 {
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.item2 {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.punteggio {
+	color: #000;
+	position: relative;
+	padding-bottom: 25px;
+  text-align:center;
+}
+
+.punteggio_num {
+	font-size: 42px;
+	font-weight: bold;
+	line-height: 1.2;
+}
+
+.otree-timer{
+position : relative;
+top: 50px;
+left: 90%;
+background-color: 	#45221;
+width: 90px;
+}
+
+.arrow {
+height:80px;
+width:80px;
+}
+
+.page-header {
+    padding-top: 20px;
+}
+
+
+div.transbox{
+background-color: #ffffff;
+border: 0px solid black;
+border-radius: 10px;
+/*opacity:0.6;
+filter: alpha(opacity=60);*/ /* For IE8 and earlier */
+}
+
+</style>
+
+<script>
+    function sharingdecision(ciao){
+        document.getElementById("id_share_decision").value= ciao;
+    }
+
+    function get_value_form(sharedecision) {
+      document.getElementById("id_share_decision").value = sharedecision;
+    }
+
+
+</script>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+{% comment %}
+<!--
+<div align="center"><h4>SCORE</h4></div>
+
+<table>
+    <thead>
+        <tr class="table100-head">
+    <th>Points</th>
+    <th>Points Cumulés</th>
+    <th>Rang</th>
+</tr>
+        <tbody>
+    <tr>
+        <th>{{ total_score }}</th>
+        <th>{{ cumulated_score }}</th>
+        <th>{% if evo == -999 %}
+            - {% endif %}
+            {% if evo == 0 %}
+            <img class = "arrow" src="{% static "EQ.png" %}"> {% endif %}
+            {% if evo > 0 %}
+            <img class = "arrow" src="{% static "UP.png" %}"> {% endif %}
+            {% if evo < 0 and evo > -999 %}
+            <img class = "arrow" src="{% static "UPNOT.png" %}"> {% endif %}</th>
+    </tr>
+
+</tbody>
+</table>
+<br>
+-->
+{% endcomment %}
+
+<div class="grid-container">
+  <div class="item1">
+
+
+  <div>
+    <div class="punteggio">
+      <div class="punteggio_num">{{ total_score }}</div>
+      <div >Score</div>
+
+    </div>
+
+    <div class="punteggio">
+      <div class="punteggio_num">{{ cumulated_score }}</div>
+      <div >Score Cumulés</div>
+
+    </div>
+
+    <div class="punteggio">
+      <div class="punteggio_num">
+
+
+      </div>
+        {% if evo == -999 %}
+            --- {% endif %}
+            {% if evo == 0 %}
+            <img class = "arrow" src="{% static "others/EQ.png" %}" style="height:80px;width:80px;"> {% endif %}
+            {% if evo > 0 %}
+            <img class = "arrow" src="{% static "others/UP.png" %}" style="height:80px;width:80px;"> {% endif %}
+            {% if evo < 0 and evo > -999 %}
+            <img class = "arrow" src="{% static "others/UPNOT.png" %}" style="height:80px;width:80px;"> {% endif %}
+      <div >Rang</div>
+
+    </div>
+
+
+
+</div> </div>
+<input type="hidden" name="share_decision" id="id_share_decision">
+<div class="item2">
+    <div class = "transbox" align="center">
+    {% if bonus == 1 %}
+            <h3 class="h3">Ingrédients bonus</h3>
+    <p>Félicitations! Vous avez trouvé un ingrédient bonus! <br>
+
+        <div><img src="{% static capsule_image%}" alt="" width="30px"></div>
+
+        Voulez-vous le partager avec les {% if degree == 2 %}deux{% else %}quatre{% endif %} chercheurs avec
+        lesquels vous êtes connecté(e) ?
+
+        <br>
+        <br>
+        <input type="radio" name="sharedecision" onclick="get_value_form(this.value)" value = 1 /> Oui <br>
+        <input type="radio" name="sharedecision" onclick="get_value_form(this.value)" value = 0 /> Non <br><br>
+     </p>
+        <div>
+            <button class="btn btn-primary btn-large">Suivant</button>
+        </div>
+
+    {% else %}
+            <h3 class="h3">Ingrédients bonus</h3>
+        <br>
+        <p>Vous n'avez pas trouvé un ingrédient bonus<br>
+
+        <button style="position:relative;margin:10px;" class="btn btn-primary btn-large" onclick="sharingdecision(-1)">Suivant</button>
+
+    {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}
+
+

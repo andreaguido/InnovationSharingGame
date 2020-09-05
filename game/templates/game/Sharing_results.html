@@ -1,0 +1,233 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+<style>
+.otree-title{
+text-align:center;
+
+}
+
+.otree-timer{
+position : relative;
+top: 50px;
+left: 90%;
+background-color: 	#45221;
+width: 90px;
+}
+
+img{
+
+    width:100%;
+
+}
+
+.page-header {
+    padding-top: 20px;
+}
+#gen_transbox1, #gen_transbox2, #gen_transbox3{
+    position:relative;
+    display: inline-block;
+    width:auto;
+    right: px;
+}
+
+#gen_transbox4{
+    position: relative;
+    top:30px;
+    left:px;
+    text-align:center;
+
+}
+#super_transbox{
+    position:relative;
+    bottom:100px;
+    width:600px;
+    left: 200px;
+    height:200px;
+    padding:10px;
+    background-color: #ffffff;
+    border-radius: 30px;
+
+}
+
+#picture_user,#picture_user2, #picture_user3, #picture_user4, #picture_idea,#picture_idea2,#picture_idea3,#picture_idea4,#picture_idea5,
+ #picture_share0,#picture_share,#picture_share2,#picture_share3, #picture_share4 {
+    position: relative;
+    left:0px;
+    border: 1px solid black;
+    border-radius: 30px;
+    padding:10px;
+    display: inline-block;
+    height:auto;
+    width:90px;
+}
+#text1, #text2, #text3 {
+    position: relative;
+    left:0px;
+    border-radius: 30px;
+    padding:10px;
+    margin-bottom:20px;
+    display: inline-block;
+}
+/*#picture_user,#picture_user2, #picture_user3, #picture_user4, #picture_idea, #picture_idea2,#picture_idea3,#picture_idea4,#picture_idea5,
+#picture_share0,#picture_share,#picture_share2,#picture_share3,#picture_share4{
+    height:auto;
+    width:90px;*/
+}
+#next_button {
+    position:relative;
+    bottom:0px;
+    left:70%;
+}
+</style>
+
+
+{% endblock %}
+
+{% block title %}
+Partage d’ingrédient bonus
+{% endblock %}
+
+{% block content %}
+<br>
+
+<div id="super_transbox">
+
+    <div id="gen_transbox1">
+                {% if treatment == "P" and degree == 2 %}
+            <div id="picture_user">
+                <img src="{% static "others/user_2.png" %}" alt="">
+            </div>
+                {% elif treatment == "P" and degree == 4 %}
+            <div id="picture_user2">
+                <img src="{% static "others/user_4.png" %}" alt="">
+            </div>
+                {% elif treatment == "S" and degree == 2 %}
+            <div id="picture_user3">
+                <img src="{% static "others/unknown_user_2.png" %}" alt="">
+            </div>
+                {% else %}
+            <div id="picture_user4">
+                <img src="{% static "others/unknown_user_4.png" %}" alt="">
+            </div>
+                {% endif %}
+            <div id="text1">Vous etes connecté
+                {% if treatment == "P" %} <b>aux mêmes
+                {% if degree == 2 %} 2 </b>{% else %} 4 </b>{% endif %}
+            {% else %} à
+                {% if degree == 2 %} <b>2</b> {% else %} <b>4</b> {% endif %}
+            {% endif %}
+            chercheurs {% if treatment != "P" %} <b>différents</b> {% endif %}</div>
+    </div>
+    <br>
+                <p style="text-align:center">Parmi eux:</p>
+
+    <div id="gen_transbox2">
+            {% if total_bonuses == 0 %}
+            <div id="picture_idea">
+                <img src="{% static "others/brokenbulb.png" %}" alt="">
+            </div>
+            {% endif %}
+
+            {% if degree == 2 %}
+
+                {% if total_bonuses == 1 %}
+                <div id="picture_idea2">
+                    <img src="{% static "others/idea21.png" %}" alt="">
+                </div>
+
+                {% elif total_bonuses == 2 %}
+                <div id="picture_idea3">
+                    <img src="{% static "others/idea22.png" %}" alt="">
+                </div>
+                {% endif %}
+            {% else %}
+
+                {% if total_bonuses == 1 %}
+                <div id="picture_idea2">
+                    <img src="{% static "others/idea41.png" %}" alt="">
+                </div>
+
+                {% elif total_bonuses == 2 %}
+                <div id="picture_idea3">
+                    <img src="{% static "others/idea42.png" %}" alt="">
+                </div>
+
+                {% elif total_bonuses == 3 %}
+                <div id="picture_idea4">
+                    <img src="{% static "others/idea43.png" %}" alt="">
+                </div>
+
+                {% elif total_bonuses == 4 %}
+                <div id="picture_idea5">
+                    <img src="{% static "others/idea44.png" %}" alt="">
+                </div>
+                {% endif %}
+            {% endif %}
+            <div id="text2">
+                {% if total_bonuses == 0 %}
+                personne a trouvé un ingrédients bonus
+                {% elif total_bonuses == 1 %}
+                {{ total_bonuses }} a trouvé un ingrédients bonus.
+                {% else %}
+                {{ total_bonuses }} ont trouvé un ingrédients bonus.
+                {% endif %}
+                </div>
+    </div>
+    <br>
+    <div id="gen_transbox3">
+            {% if total_shared == 0 %}
+                {% if total_bonuses > 0 %}
+                <div id="picture_share0">
+                    <img src="{% static "others/no_share.png" %}" alt="">
+                </div>
+                {% endif %}
+            {% endif %}
+
+            {% if degree == 2 %}
+                {% if total_shared == 1 %}
+                    <div id="picture_share">
+                        <img src="{% static "others/share21.png" %}" alt="">
+                    </div>
+                {% elif total_shared == 2 %}
+                    <div id="picture_share2">
+                        <img src="{% static "others/share22.png" %}" alt="">
+                    </div>
+                {% endif %}
+
+            {% else %}
+
+                {% if total_shared == 1 %}
+                    <div id="picture_share">
+                        <img src="{% static "others/share41.png" %}" alt="">
+                    </div>
+                {% elif total_shared == 2 %}
+                    <div id="picture_share2">
+                        <img src="{% static "others/share42.png" %}" alt="">
+                    </div>
+                {% elif total_shared == 3 %}
+                    <div id="picture_share3">
+                        <img src="{% static "others/share43.png" %}" alt="">
+                    </div>
+                {% elif  total_shared == 4%}
+                    <div id="picture_share4">
+                        <img src="{% static "others/share44.png" %}" alt="">
+                    </div>
+                {% endif %}
+            {% endif %}
+            <div id="text3">
+                {% if total_shared == 0 %}
+                    {% if total_bonuses > 0 %}Personne a partagé{% endif %}
+                {% elif total_shared == 1 %} {{ total_shared }} a decidé de partager son ingrédient bonus
+                {% else %} {{ total_shared }} ont decidé de partager leur ingrédients bonus
+                {% endif %}
+                </div>
+    </div>
+
+</div>
+
+    <button id="next_button" class = "btn btn-primary btn-large">Suivant</button>
+{% endblock %}
+
+

@@ -1,0 +1,107 @@
+
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+{% endblock %}
+
+
+{% block styles %}
+
+<style>
+.otree-title{
+  text-align:center;
+}
+
+.otree-body{
+    /*max-width:100%;*/
+    /*background: url("{% static "wood.jpg" %}");*/
+
+    }
+div.background {
+
+}
+
+div.transbox{
+margin:30px;
+padding:0;
+background-color: #ffffff;
+border: 1px solid black;
+/*opacity:0.6;*/
+filter: alpha(opacity=60); /* For IE8 and earlier */
+  border-radius: 10px;
+
+}
+
+div.transbox p {
+  margin: 5%;
+  color: #000000;
+}
+
+div.pic {
+    margin:0px;
+    opacity: 1 !important;
+    background:  black !important;
+
+    }
+
+img{
+width:500px;
+border: 1px solid black;
+  border-radius: 10px;
+
+}
+
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="transbox">
+        <h3 align="center">Formulaire de consentement</h3>
+    <p class="transbox">
+
+
+<b>Titre de l’expérience</b>: expérience sur la prise de décision en groupe.<br> <br>
+
+<b>Responsable de l’étude</b>: Rustam ROMANIUC, chercheur au Laboratoire d’Anthropologie Expérimentale
+        (Université Catholique de Lille). <br>
+<b>Contact</b>: rustam.romaniuc@univ-catholille.fr
+        <br><br>
+<b>But de cette expérience</b>: examiner la prise de décision en groupe. <br><br>
+
+<b>Durée de l’expérience</b>: environ 40 minutes. <br><br>
+
+<b>Quels sont les bénéfices à participer à cette expérience?</b> Vous recevrez un montant variable qui dépendra de votre
+        performance et de la performance des autres participants durant l’expérience.
+        <br><br>
+
+<b>Conditions pour participer à l'expérience</b>: vous devez utiliser un ordinateur (pas de tablette ou de téléphone)
+        pour participer à cette expérience.
+        Vous devez vous trouver dans un environnement calme pour la durée de l'experience (40mn)
+        <br><br>
+<b>Qu’advient-il si j’accepte de participer, mais que je change d’avis plus tard?</b> Vous pouvez quitter
+        l’expérience à tout moment. <br><br>
+
+<b>Qu’advient-il de l’information recueillie lors de l’expérience?</b> Les informations stockées seront
+        limitées à votre âge, votre sexe et vos actions liées à l’expérience. Les données enregistrées
+        sont anonymes et seront protégées par un mot de passe, uniquement connu par
+        le responsable de cette étude. <br><br>
+
+Merci d’appuyer sur « Suivant » si vous êtes d’accord avec les termes ci-dessus et que vous souhaitez
+        participer à l’expérience.
+
+
+    </p><br><br>
+</div>
+
+<center>
+    <button class = "btn btn-primary btn-large">Suivant</button>
+</center>
+
+{% endblock %}
+

@@ -1,0 +1,780 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+Atelier
+{% endblock %}
+
+{% block scripts %}
+{% comment %}<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>{% endcomment %}
+<script>
+var box_1={{ v_1 | json }}+{{ k_multiplicator |json }};
+var box_2={{ v_2 | json }}+{{ k_multiplicator |json }};
+var box_3={{ v_3 | json }}+{{ k_multiplicator |json }};
+var box_4={{ v_4 | json }}+{{ k_multiplicator |json }};
+var box_5={{ v_5 | json }}+{{ k_multiplicator |json }};
+var box_6={{ v_6 | json }}+{{ k_multiplicator |json }};
+var box_7={{ v_7 | json }}+{{ k_multiplicator |json }};
+var box_8={{ v_8 | json }}+{{ k_multiplicator |json }};
+var box_9={{ v_9 | json }}+{{ k_multiplicator |json }};
+var box_10={{ v_10 | json }}+{{ k_multiplicator |json }};
+var box_11={{ v_11 | json }}+{{ k_multiplicator |json }};
+var box_12={{ v_12 | json }}+{{ k_multiplicator |json }};
+var box_13={{ v_13 | json }}+{{ k_multiplicator |json }};
+var box_14={{ v_14 | json }}+{{ k_multiplicator |json }};
+var box_15={{ v_15 | json }}+{{ k_multiplicator |json }};
+var box_16={{ v_16 | json }}+{{ k_multiplicator |json }};
+var total1=0;
+var total2=0;
+var total3=0;
+var total=0;
+var element1="";
+var element2="";
+var element3="";
+var active = 0;
+var myVar = setInterval(function(){ check() }, 600);
+var rnd_choice = 1000;
+
+function allowDrop(ev){
+   ev.preventDefault();
+}
+
+function drag(ev){
+   ev.dataTransfer.setData("text", ev.target.id);
+   active = 1;
+   document.getElementById("id_active").value=active;
+   set_player_active(); console.log("in drag");
+}
+
+function drop(ev){
+   ev.preventDefault();
+   var image = document.getElementById(ev.dataTransfer.getData("text"));
+   var srcParent = image.parentNode;
+   var tgt = ev.currentTarget.firstElementChild;
+   ev.currentTarget.appendChild(image, tgt);
+   srcParent.appendChild(tgt);
+
+}
+
+
+function compute_score1() {
+  if($('#target1').find('#answer1').length == 1)
+  {
+    total1=box_1;
+    element1="A";
+  } else if($('#target1').find('#answer2').length == 1){
+    total1=box_2;
+    element1="B";
+  } else if($('#target1').find('#answer3').length == 1){
+    total1=box_3;
+    element1="C";
+  } else if($('#target1').find('#answer4').length == 1){
+    total1=box_4;
+    element1="D";
+  } else if($('#target1').find('#answer5').length == 1){
+    total1=box_5;
+    element1="E";
+  } else if($('#target1').find('#answer6').length == 1){
+    total1=box_6;
+    element1="F";
+  } else if($('#target1').find('#answer7').length == 1){
+    total1=box_7;
+    element1="G";
+  } else if($('#target1').find('#answer8').length == 1){
+    total1=box_8;
+    element1="H";
+  } else if($('#target1').find('#answer9').length == 1){
+    total1=box_9;
+    element1="I";
+  } else if($('#target1').find('#answer10').length == 1){
+    total1=box_10;
+    element1="L";
+  } else if($('#target1').find('#answer11').length == 1){
+    total1=box_11;
+    element1="M";
+  } else if($('#target1').find('#answer12').length == 1){
+    total1=box_12;
+    element1="N";
+  } else if($('#target1').find('#answer13').length == 1){
+    total1=box_13;
+    element1="O";
+  } else if($('#target1').find('#answer14').length == 1){
+    total1=box_14;
+    element1="P";
+  } else if($('#target1').find('#answer15').length == 1){
+    total1=box_15;
+    element1="Q";
+  } else if($('#target1').find('#answer16').length == 1){
+    total1=box_16;
+    element1="R";
+  } else {
+    total1=0;
+    element1="";
+  }
+  document.getElementById("demo").innerHTML = total1;
+}
+
+function compute_score2() {
+  if($('#target2').find('#answer1').length == 1)
+  {
+    total2=box_1;
+    element2="A";
+  } else if($('#target2').find('#answer2').length == 1){
+    total2=box_2;
+    element2="B";
+  } else if($('#target2').find('#answer3').length == 1){
+    total2=box_3;
+    element2="C";
+  } else if($('#target2').find('#answer4').length == 1){
+    total2=box_4;
+    element2="D";
+  } else if($('#target2').find('#answer5').length == 1){
+    total2=box_5;
+    element2="E";
+  } else if($('#target2').find('#answer6').length == 1){
+    total2=box_6;
+    element2="F";
+  } else if($('#target2').find('#answer7').length == 1){
+    total2=box_7;
+    element2="G";
+  } else if($('#target2').find('#answer8').length == 1){
+    total2=box_8;
+    element2="H";
+  } else if($('#target2').find('#answer9').length == 1){
+    total2=box_9;
+    element2="I";
+  } else if($('#target2').find('#answer10').length == 1){
+    total2=box_10;
+    element2="L";
+  } else if($('#target2').find('#answer11').length == 1){
+    total2=box_11;
+    element2="M";
+  } else if($('#target2').find('#answer12').length == 1){
+    total2=box_12;
+    element2="N";
+  } else if($('#target2').find('#answer13').length == 1){
+    total2=box_13;
+    element2="O";
+  } else if($('#target2').find('#answer14').length == 1){
+    total2=box_14;
+    element2="P";
+  } else if($('#target2').find('#answer15').length == 1){
+    total2=box_15;
+    element2="Q";
+  } else if($('#target2').find('#answer16').length == 1){
+    total2=box_16;
+    element2="R";
+  } else {
+    total2=0;
+    element2="";
+  }
+}
+
+function compute_score3() {
+  if($('#target3').find('#answer1').length == 1)
+  {
+    total3=box_1;
+    element3="A";
+  } else if($('#target3').find('#answer2').length == 1){
+    total3=box_2;
+    element3="B";
+  } else if($('#target3').find('#answer3').length == 1){
+    total3=box_3;
+    element3="C";
+ } else if($('#target3').find('#answer4').length == 1){
+    total3=box_4;
+    element3="D";
+  } else if($('#target3').find('#answer5').length == 1){
+    total3=box_5;
+    element3="E";
+  } else if($('#target3').find('#answer6').length == 1){
+    total3=box_6;
+    element3="F";
+  } else if($('#target3').find('#answer7').length == 1){
+    total3=box_7;
+    element3="G";
+  } else if($('#target3').find('#answer8').length == 1){
+    total3=box_8;
+    element3="H";
+  } else if($('#target3').find('#answer9').length == 1){
+    total3=box_9;
+    element3="I";
+  } else if($('#target3').find('#answer10').length == 1){
+    total3=box_10;
+    element3="L";
+  } else if($('#target3').find('#answer11').length == 1){
+    total3=box_11;
+    element3="M";
+  } else if($('#target3').find('#answer12').length == 1){
+    total3=box_12;
+    element3="N";
+  } else if($('#target3').find('#answer13').length == 1){
+    total3=box_13;
+    element3="O";
+  } else if($('#target3').find('#answer14').length == 1){
+    total3=box_14;
+    element3="P";
+  } else if($('#target3').find('#answer15').length == 1){
+    total3=box_15;
+    element3="Q";
+  } else if($('#target3').find('#answer16').length == 1){
+    total3=box_16;
+    element3="R";
+  } else {
+    total3=0;
+    element3="";
+  }
+}
+
+
+function check(){
+
+        if($('#target1').contents().length == 0 | $('#target2').contents().length == 0 | $('#target3').contents().length == 0 ){
+            document.getElementById("next_button").disabled = true;
+        } else {document.getElementById("next_button").disabled= false;};
+
+        }
+
+
+function compute_total_score(){
+
+    compute_score1();
+    compute_score2();
+    compute_score3();
+    total=total3+total2+total1;
+    name_triad=element1+element2+element3;
+    document.getElementById("demo").innerHTML = total;
+    document.getElementById("demo2").innerHTML = element1+" "+element2+" "+element3;
+    document.getElementById("id_total_score").value=total;
+    document.getElementById("id_triad").value=name_triad;
+    document.getElementById("id_active").value=active;
+
+}
+
+
+        window.onload = function() {
+            //----------------------------------------------
+            //----------------------------------------------
+            // Connect to the activity channel
+            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            var socket = new WebSocket(ws_scheme + '://' + window.location.host + "/game/activity");
+            // Handle any errors that occur.
+            socket.onerror = function(error) {
+                console.log('WebSocket Error: ' + error);
+            };
+            set_player_active = function() {
+                var msg = {
+                    player_pk: {{player.pk}},
+                    order: "set_player_active",
+                    };
+                if(socket.readyState === socket.OPEN){
+                    socket.send(JSON.stringify(msg));
+                }
+            };
+            set_player_inactive = function() {
+                var msg = {
+                    player_pk: {{player.pk}},
+                    order: "set_player_inactive",
+                    };
+                if(socket.readyState === socket.OPEN){
+                    socket.send(JSON.stringify(msg));
+                }
+            };
+            // Show a connected message when the WebSocket is opened.
+            socket.onopen = function(event) {
+                console.log('connected to oTree');
+            };
+            // Handle messages sent by the server.
+            socket.onmessage = function(event) {
+                var obj = jQuery.parseJSON(event.data);
+                order = obj.order;
+                if(order=="order_from_server"){
+                }
+            };
+            // Show a disconnected message when the WebSocket is closed.
+            socket.onclose = function(event) {
+                console.log('disconnected from oTree');
+            };
+        };
+
+</script>
+{% endblock %}
+
+{% block content %}
+<style>
+
+#capsule_container{
+position:relative;
+bottom: 980px;
+/*opacity:0.8;*/
+left: 41.7%;
+width: 25px;
+height:80px;
+border-radius: 30px;
+filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+caption {
+    padding: 10px;
+    caption-side: top;
+}
+img {
+    max-width: auto;
+    max-height: auto;
+    height: 100%;
+    display: block;
+    margin:0 auto;
+
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px #FF22
+  /*rgba(0, 140, 186, 0.5);*/
+}
+
+.row{
+  width: 1000px;
+  margin-left:0px;
+  padding-top:4%;
+
+}
+
+.row div{
+  float:left;
+  width: 100px;
+  padding: 0px;
+  border: 1px solid black;
+  margin: 0px;
+}
+
+
+#answer1Box,#answer2Box,#answer3Box,#answer4Box,#answer5Box,#answer6Box,#answer7Box,#answer8Box,#answer9Box,#answer10Box,#answer11Box,#answer12Box,#answer13Box,#answer14Box,#answer15Box,#answer16Box
+{
+  width: 80px;
+  height: 95px;
+  margin: 0px;
+  padding-bottom: 12px;
+  border: 0px solid black;
+
+}
+
+#target1, #target2, #target3
+{
+  position:relative;
+  width: 90px;
+  height: 94px;
+  margin: 0.9px;
+  padding: 0px;
+  padding-left:1px;
+  padding-right:1px;
+  border: 3px solid #FFFF66;
+  background-color: #FF22;
+  top: 160px;
+  right:3.1%;
+  display: inline-block;
+  }
+
+#answerBoxes {
+    position:relative;
+    align: bottom;
+    width:600px;
+    background-color: black;
+    }
+
+#targets {
+    position:relative;
+    bottom:600px;
+    width:700px;
+    left: 20%;
+    height:400px;
+    background-image: url("{% static "others/blender.png" %}");
+     background-repeat: no-repeat;
+     background-position: center;
+        background-size:contain;
+        border: 0px solid black;
+
+  }
+
+#buttons {
+    position: relative;
+    bottom:580px;
+    width:700px;
+    left: 20%;
+}
+
+.otree-title{
+text-align:center;
+
+}
+.otree-body {
+/*max-width:100%;
+background-image: url("{% static "wood.jpg" %}");
+background-size: auto;*/
+}
+
+.page-header {
+    padding-top: 30px;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.otree-timer{
+position : relative;
+top: 30px;
+left: 100%;
+background-color: 	#45221;
+width: 90px;
+}
+.cabinet {
+  position: relative;
+  top: -90px;
+  right: 47%;
+  width: 350px;
+  height: 600px;
+  background-color: #45221c;
+  border: 10px solid #69342b;
+  box-sizing: border-box;
+}
+.cabinet .cabinet-top {
+  width: 104%;
+  height: 0;
+  border-bottom: 10px solid #572b23;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  box-sizing: border-box;
+  top: -19px;
+  left: -2%;
+  position: absolute;
+}
+.cabinet .shelf {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  box-sizing: border-box;
+}
+
+.cabinet .shelf .back {
+  position: absolute;
+  top: 0;
+  left: 2%;
+  width: 96%;
+  height: 100%;
+  background: #2;
+  box-shadow: inset 10px 15px 15px #21100d;
+}
+.cabinet .shelf .base {
+  width: 100%;
+  height: 0;
+  border-bottom: 20px solid #331915;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  box-sizing: border-box;
+  bottom: 10px;
+  position: absolute;
+}
+.cabinet .shelf .front {
+  width: 100%;
+  height: 10px;
+  background-color: #69342b;
+  position: absolute;
+  bottom: 0;
+}
+
+div p{
+  font-family: OpenSans-Regular;
+  font-size: 20px;
+}
+
+div.transbox{
+max-width:600px;
+padding:0px;
+background-color: #ffffff;
+border: 0px solid black;
+border-radius: 30px;
+}
+
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<center>
+<div id="whatsWhatContent">
+<div id="answers">
+
+<div class="cabinet">
+    <div class="cabinet-top"></div>
+    <div class="shelf">
+        <div class="upper-left-triangle"></div>
+        <div class="upper-right-triangle"></div>
+        <div class="base"></div>
+        <div class="back">
+            <table>
+                <tr>
+                    <th>
+                        <div class="row">
+
+                            <div id="answer1Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer1" src="{% static pic_1 %}" draggable="true"
+                                ondragstart="drag(event)">
+                            </div>
+
+
+                            <div id="answer2Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer2" src="{% static pic_2 %}"  draggable="true"
+                                ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer3Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer3" src="{% static pic_3 %}"  draggable="true" ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer4Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer4" src="{% static pic_4 %}"  draggable="true" ondragstart="drag(event)">
+                            </div>
+
+                        </div>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div class="front"></div>
+        </div>
+    <div class="cabinet-top"></div>
+    <div class="shelf">
+        <div class="upper-left-triangle"></div>
+        <div class="upper-right-triangle"></div>
+        <div class="base"></div>
+        <div class="back">
+            <table>
+                <tr>
+                    <th>
+                        <div class="row">
+                            <div id="answer5Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer5" src="{% static pic_5%}"  draggable="true" ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer6Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer6" src="{% static pic_6 %}"  draggable="true" ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer7Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer7" src="{% static pic_7 %}"  draggable="true" ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer8Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer8" src="{% static pic_8 %}"  draggable="true" ondragstart="drag(event)">
+                            </div>
+
+                        </div>
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="front"></div>
+    </div>
+    <div class="cabinet-top"></div>
+    <div class="shelf">
+        <div class="upper-left-triangle"></div>
+        <div class="upper-right-triangle"></div>
+        <div class="base"></div>
+        <div class="back">
+            <table>
+                <tr>
+                    <th>
+                        <div class="row">
+                    <div id="answer9Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer9" src="{% static pic_9  %}" draggable="true"
+                        ondragstart="drag(event)">
+                    </div>
+
+
+                    <div id="answer10Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer10" src="{% static pic_10 %}"  draggable="true"
+                        ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer11Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer11" src="{% static pic_11 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer12Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer12" src="{% static pic_12 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+
+                        </div>
+                    </th>
+                </tr>
+            </table>
+        </div>
+                <div class="front"></div>
+        </div>
+    <div class="cabinet-top"></div>
+    <div class="shelf">
+        <div class="upper-left-triangle"></div>
+        <div class="upper-right-triangle"></div>
+        <div class="base"></div>
+        <div class="back">
+            <table>
+                <tr>
+                    <th>
+                        <div class="row">
+
+
+                    <div id="answer13Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer13" src="{% static pic_13%}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer14Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer14" src="{% static pic_14 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer15Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer15" src="{% static pic_15 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer16Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer16" src="{% static pic_16 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+
+                        </div>
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="front"></div>
+    </div>
+  </div>
+
+    <div id = "targets">
+        <div class = "transbox" align="center" style = "position: relative; bottom:10%; right:10%;">
+            <p>Choisissez 3 ingrédients et placez les dans l'espace ci-dessous</p></div>
+            <th><div id="target1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></th>
+                <th><div id="target2" ondrop="drop(event)" ondragover="allowDrop(event)"></div></th>
+                <th><div id="target3" ondrop="drop(event)" ondragover="allowDrop(event)"></div></th>
+    </div>
+
+    <div id = "buttons">
+       <!--<button class="btn btn-primary btn-large" onClick="window.location.reload()" type="button">Reset Boxes</button>-->
+    <button id= "next_button" class="btn btn-primary btn-large" onclick="compute_total_score()">Suivant</button>
+
+    </div>
+<!--
+<table style="width:100%">
+    <tr>
+        <th>
+            <div id="whatsWhatContent">
+                <div id="answers">
+                <div class="row">
+
+                    <div id="answer1Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer1" src="{% static pic_1  %}" draggable="true"
+                        ondragstart="drag(event)">
+                    </div>
+
+
+                    <div id="answer2Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer2" src="{% static pic_2 %}"  draggable="true"
+                        ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer3Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer3" src="{% static pic_3 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer4Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer4" src="{% static pic_4 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer5Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer5" src="{% static pic_5%}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer6Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer6" src="{% static pic_6 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer7Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer7" src="{% static pic_7 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer8Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer8" src="{% static pic_8 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+
+                    <div id="answer9Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer9" src="{% static pic_9  %}" draggable="true"
+                        ondragstart="drag(event)">
+                    </div>
+
+
+                    <div id="answer10Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer10" src="{% static pic_10 %}"  draggable="true"
+                        ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer11Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer11" src="{% static pic_11 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer12Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer12" src="{% static pic_12 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer13Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer13" src="{% static pic_13%}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer14Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer14" src="{% static pic_14 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer15Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer15" src="{% static pic_15 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer16Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer16" src="{% static pic_16 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </th>
+</table>
+<table>
+-->
+
+
+    {% if k_multiplicator > 0 %}
+    <div id = "capsule_container">
+        <img src="{% static capsule_image%}" alt="" style="width=100%;">
+        </div>
+    {% endif %}
+
+    </div>
+<div>
+    <input type="hidden" id="demo">
+</div>
+<div>
+    <input type="hidden" id="demo2">
+</div>
+    <br>
+<div align="center">
+    <input type="hidden" name="total_score" id="id_total_score"/>
+    <input type="hidden" name="triad" id="id_triad"/>
+    <input type="hidden" name="active" id="id_active"/>
+   <!--<button id="bravo" onClick= "compute_total_score()" class="btn btn-primary btn-large" value="Confirm" type="button">Check JS</button>-->
+</div>
+</center>
+
+
+
+{% endblock %}
+
+

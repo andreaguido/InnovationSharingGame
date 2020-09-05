@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+this is the initial feedback informing you on your neighbours
+{% endblock %}
+
+{% block content %}
+<br>
+<table border="1">
+    <tr>
+        <th align="center">Player</th>
+        <th align="center">Accumulated Bonus</th>
+        <th align="center">Ranking</th>
+    </tr>
+
+     {% for bonus in information %}
+    <tr>
+
+        <td align = "center">{{ forloop.counter }}</td>
+        <td align = "center">{{ bonus }}</td>
+        <td align = "center">{% if not ranking %} - {% else %} {{ ranking }} {% endif %}</td>
+
+    </tr>
+    {% endfor %}
+    </table>
+
+<br> <br>
+{% next_button %}
+{% endblock %}
+
+

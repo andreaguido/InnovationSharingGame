@@ -1,0 +1,430 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>
+var box_1={{ v_1 | json }}+{{ k_multiplicator |json }};
+var box_2={{ v_2 | json }}+{{ k_multiplicator |json }};
+var box_3={{ v_3 | json }}+{{ k_multiplicator |json }};
+var box_4={{ v_4 | json }}+{{ k_multiplicator |json }};
+var box_5={{ v_5 | json }}+{{ k_multiplicator |json }};
+var box_6={{ v_6 | json }}+{{ k_multiplicator |json }};
+var box_7={{ v_7 | json }}+{{ k_multiplicator |json }};
+var box_8={{ v_8 | json }}+{{ k_multiplicator |json }};
+var box_9={{ v_9 | json }}+{{ k_multiplicator |json }};
+var box_10={{ v_10 | json }}+{{ k_multiplicator |json }};
+var box_11={{ v_11 | json }}+{{ k_multiplicator |json }};
+var box_12={{ v_12 | json }}+{{ k_multiplicator |json }};
+var box_13={{ v_13 | json }}+{{ k_multiplicator |json }};
+var box_14={{ v_14 | json }}+{{ k_multiplicator |json }};
+var box_15={{ v_15 | json }}+{{ k_multiplicator |json }};
+var box_16={{ v_16 | json }}+{{ k_multiplicator |json }};
+var total1=0;
+var total2=0;
+var total3=0;
+var total=0;
+var element1="";
+var element2="";
+var element3="";
+
+function allowDrop(ev){
+   ev.preventDefault();
+}
+
+function drag(ev){
+   ev.dataTransfer.setData("content", ev.target.id);
+}
+
+function drop(ev){
+   ev.preventDefault();
+   var image = ev.dataTransfer.getData("content");
+   ev.target.appendChild(document.getElementById(image));
+
+}
+
+
+function compute_score1() {
+  if($('#target1').find('#answer1').length == 1)
+  {
+    total1=box_1;
+    element1="A";
+  } else if($('#target1').find('#answer2').length == 1){
+    total1=box_2;
+    element1="B";
+  } else if($('#target1').find('#answer3').length == 1){
+    total1=box_3;
+    element1="C";
+  } else if($('#target1').find('#answer4').length == 1){
+    total1=box_4;
+    element1="D";
+  } else if($('#target1').find('#answer5').length == 1){
+    total1=box_5;
+    element1="E";
+  } else if($('#target1').find('#answer6').length == 1){
+    total1=box_6;
+    element1="F";
+  } else if($('#target1').find('#answer7').length == 1){
+    total1=box_7;
+    element1="G";
+  } else if($('#target1').find('#answer8').length == 1){
+    total1=box_8;
+    element1="H";
+  } else if($('#target1').find('#answer9').length == 1){
+    total1=box_9;
+    element1="I";
+  } else if($('#target1').find('#answer10').length == 1){
+    total1=box_10;
+    element1="L";
+  } else if($('#target1').find('#answer11').length == 1){
+    total1=box_11;
+    element1="M";
+  } else if($('#target1').find('#answer12').length == 1){
+    total1=box_12;
+    element1="N";
+  } else if($('#target1').find('#answer13').length == 1){
+    total1=box_13;
+    element1="O";
+  } else if($('#target1').find('#answer14').length == 1){
+    total1=box_14;
+    element1="P";
+  } else if($('#target1').find('#answer15').length == 1){
+    total1=box_15;
+    element1="Q";
+  } else if($('#target1').find('#answer16').length == 1){
+    total1=box_16;
+    element1="R";
+  } else {
+    total1=0;
+    element1="";
+  }
+  document.getElementById("demo").innerHTML = total1;
+}
+
+function compute_score2() {
+  if($('#target2').find('#answer1').length == 1)
+  {
+    total2=box_1;
+    element2="A";
+  } else if($('#target2').find('#answer2').length == 1){
+    total2=box_2;
+    element2="B";
+  } else if($('#target2').find('#answer3').length == 1){
+    total2=box_3;
+    element2="C";
+  } else if($('#target2').find('#answer4').length == 1){
+    total2=box_4;
+    element2="D";
+  } else if($('#target2').find('#answer5').length == 1){
+    total2=box_5;
+    element2="E";
+  } else if($('#target2').find('#answer6').length == 1){
+    total2=box_6;
+    element2="F";
+  } else if($('#target2').find('#answer7').length == 1){
+    total2=box_7;
+    element2="G";
+  } else if($('#target2').find('#answer8').length == 1){
+    total2=box_8;
+    element2="H";
+  } else if($('#target2').find('#answer9').length == 1){
+    total2=box_9;
+    element2="I";
+  } else if($('#target2').find('#answer10').length == 1){
+    total2=box_10;
+    element2="L";
+  } else if($('#target2').find('#answer11').length == 1){
+    total2=box_11;
+    element2="M";
+  } else if($('#target2').find('#answer12').length == 1){
+    total2=box_12;
+    element2="N";
+  } else if($('#target2').find('#answer13').length == 1){
+    total2=box_13;
+    element2="O";
+  } else if($('#target2').find('#answer14').length == 1){
+    total2=box_14;
+    element2="P";
+  } else if($('#target2').find('#answer15').length == 1){
+    total2=box_15;
+    element2="Q";
+  } else if($('#target2').find('#answer16').length == 1){
+    total2=box_16;
+    element2="R";
+  } else {
+    total2=0;
+    element2="";
+  }
+}
+
+function compute_score3() {
+  if($('#target3').find('#answer1').length == 1)
+  {
+    total3=box_1;
+    element3="A";
+  } else if($('#target3').find('#answer2').length == 1){
+    total3=box_2;
+    element3="B";
+  } else if($('#target3').find('#answer3').length == 1){
+    total3=box_3;
+    element3="C";
+ } else if($('#target3').find('#answer4').length == 1){
+    total3=box_4;
+    element3="D";
+  } else if($('#target3').find('#answer5').length == 1){
+    total3=box_5;
+    element3="E";
+  } else if($('#target3').find('#answer6').length == 1){
+    total3=box_6;
+    element3="F";
+  } else if($('#target3').find('#answer7').length == 1){
+    total3=box_7;
+    element3="G";
+  } else if($('#target3').find('#answer8').length == 1){
+    total3=box_8;
+    element3="H";
+  } else if($('#target3').find('#answer9').length == 1){
+    total3=box_9;
+    element3="I";
+  } else if($('#target3').find('#answer10').length == 1){
+    total3=box_10;
+    element3="L";
+  } else if($('#target3').find('#answer11').length == 1){
+    total3=box_11;
+    element3="M";
+  } else if($('#target3').find('#answer12').length == 1){
+    total3=box_12;
+    element3="N";
+  } else if($('#target3').find('#answer13').length == 1){
+    total3=box_13;
+    element3="O";
+  } else if($('#target3').find('#answer14').length == 1){
+    total3=box_14;
+    element3="P";
+  } else if($('#target3').find('#answer15').length == 1){
+    total3=box_15;
+    element3="Q";
+  } else if($('#target3').find('#answer16').length == 1){
+    total3=box_16;
+    element3="R";
+  } else {
+    total3=0;
+    element3="";
+  }
+}
+
+function check(){
+
+        if(document.getElementById("element1").innerHTML !="" && document.getElementById("element2").innerHTML !="" && document.getElementById("element3").innerHTML !=""){
+            document.getElementById("bravo").style.visibility = "visible";
+        } else {document.getElementById("bravo").style.visibility = "hidden";};
+
+        }
+
+
+function compute_total_score(){
+
+    compute_score1()
+    compute_score2()
+    compute_score3()
+    total=total3+total2+total1;
+    name_triad=element1+element2+element3;
+    document.getElementById("demo").innerHTML = total;
+    document.getElementById("demo2").innerHTML = element1+" "+element2+" "+element3;
+    document.getElementById("id_total_score").value=total;
+    document.getElementById("id_triad").value=name_triad;
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<style>
+img {
+    max-width: 80%;
+    max-height: 90%;
+    height: auto;
+    display: block;
+    padding-top:8%
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.row{
+  width: 500px;
+  margin-left:0px;
+}
+
+.row div{
+  float:left;
+  width: 100px;
+  padding: 0px;
+  border: 1px solid black;
+  margin: 0px;
+}
+
+/*#answer1Box,#answer2Box,#answer3Box,#answer4Box,#answer5Box,#answer6Box,#answer7Box,#answer8Box,#answer9Box,#answer10Box,#answer11Box,#answer12Box,#answer13Box,#answer14Box,#answer15Box,#answer16Box
+{
+float: left;
+  width: 100px;
+  height: 100px;
+  margin: 0px;
+  padding: 0px;
+  border: 0px solid black;
+}
+*/
+
+
+#target1, #target2, #target3
+{
+float: right;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  padding: 0px;
+  border: 1px solid black;
+  }
+
+
+.otree-body {
+max-width:100%;
+}
+
+
+.cabinet {
+  position: left;
+  width: 460px;
+  height: 350px;
+  background-color: #45221c;
+  top: 40px;
+  left: 30%;
+  border: 10px solid #69342b;
+  box-sizing: border-box;
+}
+.cabinet .cabinet-top {
+  width: 104%;
+  height: 0;
+  border-bottom: 10px solid #572b23;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  box-sizing: border-box;
+  top: -20px;
+  left: -2%;
+  position: absolute;
+}
+.cabinet .shelf {
+  position: relative;
+  width: 100%;
+  height: 51%;
+  box-sizing: border-box;
+}
+
+.cabinet .shelf .back {
+  position: absolute;
+  top: 0;
+  left: 2%;
+  width: 96%;
+  height: 100%;
+  background: #2;
+  box-shadow: inset 10px 15px 15px #21100d;
+  object-position: bottom;
+}
+.cabinet .shelf .base {
+  width: 100%;
+  height: 0;
+  border-bottom: 20px solid #331915;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  box-sizing: border-box;
+  bottom: 10px;
+  position: absolute;
+}
+.cabinet .shelf .front {
+  width: 100%;
+  height: 10px;
+  background-color: #69342b;
+  position: absolute;
+  bottom: 0;
+}
+
+
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+You are player {{ player_id }} <br>
+Round {{ num_round }}/{{ total_num_round }} <br>
+Innovations found: {{ k_multiplicator }}
+
+<div class="cabinet">
+  <div class="cabinet-top"></div>
+
+  <div class="shelf">
+    <div class="upper-left-triangle"></div>
+    <div class="upper-right-triangle"></div>
+    <div class="base"></div>
+    <div class="back"><table style="width:100%">
+    <tr>
+        <th>
+            <div id="whatsWhatContent">
+                <div id="answers">
+                <div class="row">
+
+                    <div id="answer1Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer1" src="{% static pic_1  %}" draggable="true"
+                        ondragstart="drag(event)">
+                    </div>
+
+
+                    <div id="answer2Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer2" src="{% static pic_2 %}"  draggable="true"
+                        ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer3Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer3" src="{% static pic_3 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer4Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer4" src="{% static pic_4 %}"  draggable="true" ondragstart="drag(event)">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </th>
+    </tr>
+</table></div>
+    <div class="front"></div>
+
+  </div>
+  <div class="shelf">
+    <div class="upper-left-triangle"></div>
+    <div class="upper-right-triangle"></div>
+    <div class="back"></div>
+    <div class="base"></div>
+    <div class="front"></div>
+
+  </div>
+</div>
+<div id="answerBoxes">
+                <div id="target1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div id="target2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div id="target3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+<div>
+    <input type="hidden" name="total_score" id="id_total_score"/>
+    <input type="hidden" name="triad" id="id_triad"/>
+    <button id="bravo" onClick= "compute_total_score()" class="btn btn-primary btn-large" value="Confirm" type="button">Check JS</button>
+    <button class="btn btn-primary btn-large" onClick="window.location.reload()" type="button">Reset Boxes</button>
+    <button class="btn btn-primary btn-large" onclick="compute_total_score()">Next</button>
+
+</div>
+
+{% endblock %}
+
+

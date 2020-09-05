@@ -1,0 +1,511 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+Tutoriel
+{% endblock %}
+
+{% block scripts %}
+{% comment %}<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>{% endcomment %}
+<script>
+var myVar = setInterval(function(){ check() }, 600);
+
+function allowDrop(ev){
+   ev.preventDefault();
+}
+
+function drag(ev){
+   ev.dataTransfer.setData("text", ev.target.id);
+   active = 1;
+
+}
+
+function drop(ev){
+   ev.preventDefault();
+   var image = document.getElementById(ev.dataTransfer.getData("text"));
+   var srcParent = image.parentNode;
+   var tgt = ev.currentTarget.firstElementChild;
+   ev.currentTarget.appendChild(image, tgt);
+   srcParent.appendChild(tgt);
+
+}
+
+function disappear(){
+      document.getElementById("text0").style.visibility= "hidden";
+      document.getElementById("text1").style.visibility= "visible";
+      document.getElementById("buttons").style.visibility= "visible";
+      document.getElementById("answer1").draggable= "true";
+      document.getElementById("answer2").draggable= "true";
+      document.getElementById("answer3").draggable= "true";
+      document.getElementById("answer4").draggable= "true";
+      document.getElementById("answer5").draggable= "true";
+      document.getElementById("answer6").draggable= "true";
+      document.getElementById("answer7").draggable= "true";
+      document.getElementById("answer8").draggable= "true";
+      document.getElementById("answer9").draggable= "true";
+      document.getElementById("answer10").draggable= "true";
+      document.getElementById("answer11").draggable= "true";
+      document.getElementById("answer12").draggable= "true";
+      document.getElementById("answer13").draggable= "true";
+      document.getElementById("answer14").draggable= "true";
+      document.getElementById("answer15").draggable= "true";
+      document.getElementById("answer16").draggable= "true";
+}
+
+function check(){
+
+        if($('#target1').contents().length == 0 | $('#target2').contents().length == 0 | $('#target3').contents().length == 0 ){
+            document.getElementById("next_button").disabled = true;
+            document.getElementById("text2").style.visibility = "hidden";
+        } else {document.getElementById("next_button").disabled= false;
+                    document.getElementById("text2").style.visibility = "visible";
+                    document.getElementById("text1").style.visibility = "hidden";
+                    };
+
+        }
+
+
+function compute_total_score(){
+
+    compute_score1()
+    compute_score2()
+    compute_score3()
+    total=total3+total2+total1;
+    name_triad=element1+element2+element3;
+    document.getElementById("demo").innerHTML = total;
+    document.getElementById("demo2").innerHTML = element1+" "+element2+" "+element3;
+    document.getElementById("id_total_score").value=total;
+    document.getElementById("id_triad").value=name_triad;
+    document.getElementById("id_active").value=active;
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<style>
+
+#capsule_container{
+position:relative;
+bottom: 860px;
+/*opacity:0.8;*/
+left: 38.1%;
+width: 60px;
+border-radius: 30px;
+filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+caption {
+    padding: 10px;
+    caption-side: top;
+}
+img {
+    max-width: auto;
+    max-height: auto;
+    height: 100%;
+    display: block;
+    margin:0 auto;
+
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px #FF22
+  /*rgba(0, 140, 186, 0.5);*/
+}
+
+.row{
+  width: 1000px;
+  margin-left:0px;
+  padding-top:4%;
+
+}
+
+.row div{
+  float:left;
+  width: 100px;
+  padding: 0px;
+  border: 1px solid black;
+  margin: 0px;
+}
+
+
+#answer1Box,#answer2Box,#answer3Box,#answer4Box,#answer5Box,#answer6Box,#answer7Box,#answer8Box,#answer9Box,#answer10Box,#answer11Box,#answer12Box,#answer13Box,#answer14Box,#answer15Box,#answer16Box
+{
+  width: 80px;
+  height: 95px;
+  margin: 0px;
+  padding-bottom: 12px;
+  border: 0px solid black;
+
+}
+
+#target1, #target2, #target3
+{
+  position:relative;
+  width: 70px;
+  height: 72px;
+  margin: 3px;
+  padding: 0px;
+  padding-left:1px;
+  padding-right:1px;
+  border: 3px solid #FFFF66;
+  background-color: #FF22;
+  top: 210px;
+  right:3%;
+  display: inline-block;
+  }
+
+#answerBoxes {
+    position:relative;
+    align: bottom;
+    width:600px;
+    background-color: black;
+    }
+
+#targets {
+    position:relative;
+    bottom:590px;
+    width:700px;
+    left: 20%;
+    height:400px;
+    background-image: url("{% static "others/blender.png" %}");
+     background-repeat: no-repeat;
+     background-position: center;
+
+  }
+
+.otree-title{
+text-align:center;
+
+}
+
+.page-header {
+    padding-top: 30px;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.otree-timer{
+position : relative;
+top: 30px;
+left: 100%;
+background-color: 	#45221;
+width: 90px;
+}
+
+.cabinet {
+  position: relative;
+  top: 50px;
+  right: 47%;
+  width: 350px;
+  height: 600px;
+  background-color: #45221c;
+  border: 10px solid #69342b;
+  box-sizing: border-box;
+}
+.cabinet .cabinet-top {
+  width: 104%;
+  height: 0;
+  border-bottom: 10px solid #572b23;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  box-sizing: border-box;
+  top: -19px;
+  left: -2%;
+  position: absolute;
+}
+.cabinet .shelf {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  box-sizing: border-box;
+}
+
+.cabinet .shelf .back {
+  position: absolute;
+  top: 0;
+  left: 2%;
+  width: 96%;
+  height: 100%;
+  background: #2;
+  box-shadow: inset 10px 15px 15px #21100d;
+}
+.cabinet .shelf .base {
+  width: 100%;
+  height: 0;
+  border-bottom: 20px solid #331915;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  box-sizing: border-box;
+  bottom: 10px;
+  position: absolute;
+}
+.cabinet .shelf .front {
+  width: 100%;
+  height: 10px;
+  background-color: #69342b;
+  position: absolute;
+  bottom: 0;
+}
+
+div p{
+  font-family: OpenSans-Regular;
+  font-size: 20px;
+  color: #000000;
+}
+
+#transbox{
+    position:relative;
+    bottom:570px;
+    width:700px;
+    left: 20%;
+    height:180px;
+    max-width:700px;
+    top: 90%;
+    padding:15px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+#text0 {
+    position: relative;
+    bottom:auto;
+    visibility:visible;
+    text-align:justify;
+}
+#text1 {
+    position: relative;
+    bottom:130px;
+    visibility:hidden;
+    text-align:justify;
+}
+#text2 {
+    position: relative;
+    bottom:230px;
+    left:250px;
+    visibility:hidden;
+    text-align:justify;
+}
+#next_info {
+    position: absolute;
+    top:120px;
+    left:380px;
+}
+#buttons {
+    position: relative;
+    visibility:hidden;
+    bottom:610px;
+    width:700px;
+    left: 20%;
+}
+
+
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<center>
+<div id="whatsWhatContent">
+<div id="answers">
+    <div class="cabinet">
+    <div class="cabinet-top"></div>
+    <div class="shelf">
+        <div class="upper-left-triangle"></div>
+        <div class="upper-right-triangle"></div>
+        <div class="base"></div>
+        <div class="back">
+            <table>
+                <tr>
+                    <th>
+                        <div class="row">
+
+                            <div id="answer1Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer1" src="{% static "potions/1.png" %}" draggable="false"
+                                ondragstart="drag(event)">
+                            </div>
+
+
+                            <div id="answer2Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer2" src="{% static "potions/2.png" %}"  draggable="false"
+                                ondragstart="drag(event)" style = "">
+                            </div>
+
+                            <div id="answer3Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer3" src="{% static "potions/3.png" %}"  draggable="false" ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer4Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer4" src="{% static "potions/4.png" %}"  draggable="false" ondragstart="drag(event)">
+                            </div>
+
+                        </div>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div class="front"></div>
+        </div>
+    <div class="cabinet-top"></div>
+    <div class="shelf">
+        <div class="upper-left-triangle"></div>
+        <div class="upper-right-triangle"></div>
+        <div class="base"></div>
+        <div class="back">
+            <table>
+                <tr>
+                    <th>
+                        <div class="row">
+                            <div id="answer5Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer5" src="{% static "potions/11.png"%}"  draggable="false" ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer6Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer6" src="{% static "potions/21.png" %}"  draggable="false" ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer7Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer7" src="{% static "potions/31.png" %}"  draggable="false" ondragstart="drag(event)">
+                            </div>
+
+                            <div id="answer8Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img id="answer8" src="{% static "potions/41.png" %}"  draggable="false" ondragstart="drag(event)">
+                            </div>
+
+                        </div>
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="front"></div>
+    </div>
+    <div class="cabinet-top"></div>
+    <div class="shelf">
+        <div class="upper-left-triangle"></div>
+        <div class="upper-right-triangle"></div>
+        <div class="base"></div>
+        <div class="back">
+            <table>
+                <tr>
+                    <th>
+                        <div class="row">
+                    <div id="answer9Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer9" src="{% static "potions/20.png"  %}" draggable="false"
+                        ondragstart="drag(event)">
+                    </div>
+
+
+                    <div id="answer10Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer10" src="{% static "potions/22.png" %}"  draggable="false"
+                        ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer11Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer11" src="{% static "potions/23.png" %}"  draggable="false" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer12Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer12" src="{% static "potions/24.png" %}"  draggable="false" ondragstart="drag(event)">
+                    </div>
+
+
+                        </div>
+                    </th>
+                </tr>
+            </table>
+        </div>
+                <div class="front"></div>
+        </div>
+    <div class="cabinet-top"></div>
+    <div class="shelf">
+        <div class="upper-left-triangle"></div>
+        <div class="upper-right-triangle"></div>
+        <div class="base"></div>
+        <div class="back">
+            <table>
+                <tr>
+                    <th>
+                        <div class="row">
+
+
+                    <div id="answer13Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer13" src="{% static "potions/55.png"%}"  draggable="false" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer14Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer14" src="{% static "potions/56.png" %}"  draggable="false" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer15Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer15" src="{% static "potions/57.png" %}"  draggable="false" ondragstart="drag(event)">
+                    </div>
+
+                    <div id="answer16Box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="answer16" src="{% static "potions/58.png" %}"  draggable="false" ondragstart="drag(event)">
+                    </div>
+
+
+                        </div>
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="front"></div>
+    </div>
+  </div>
+    <div id = "transbox">
+        <div id="text0">
+            Merci de participer à cette expérience.
+            <br><br>
+            Pour cette expérience, nous vous demandons d’imaginer le scénario suivant: Vous faites partie d'une communauté de chercheurs en
+            sciences médicales et devez produire des remèdes afin de lutter contre des virus.
+
+        <input type="button" id= "next_info" class="btn btn-primary btn-large" style="width:auto" onclick="disappear()" value="Info Suivante">
+
+        </div>
+        <div id="text1">
+        Pour cela, vous aurez à votre disposition un ensemble de 16 ingrédients. A chaque période, vous disposerez de 30
+            secondes pour produire un remède à partir de 3 ingrédients (à vous de décider sur quels critères vous faites votre choix).
+            <br>
+        Si vous n’avez pas validé votre choix à l’issue des 30 secondes, l’ordinateur prendra une décision à votre place.
+            <br>
+        Placez trois ingrédients dans la machine pour continuer.
+        </div>
+        <div id="text2">Appuyez sur Suivant</div>
+    </div>
+
+    <div id = "targets">
+            <th><div id="target1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></th>
+                <th><div id="target2" ondrop="drop(event)" ondragover="allowDrop(event)"></div></th>
+                <th><div id="target3" ondrop="drop(event)" ondragover="allowDrop(event)"></div></th>
+    </div>
+
+    <div id = "buttons">
+       <!--<button class="btn btn-primary btn-large" onClick="window.location.reload()" type="button">Reset Boxes</button>-->
+    <button id= "next_button" class="btn btn-primary btn-large" onclick="compute_total_score()">Suivant</button>
+
+    </div>
+
+
+    </div>
+<div>
+    <input type="hidden" id="demo">
+</div>
+<div>
+    <input type="hidden" id="demo2">
+</div>
+    <br>
+<div align="center">
+    <input type="hidden" name="total_score" id="id_total_score"/>
+    <input type="hidden" name="triad" id="id_triad"/>
+    <input type="hidden" name="active" id="id_active"/>
+   <!--<button id="bravo" onClick= "compute_total_score()" class="btn btn-primary btn-large" value="Confirm" type="button">Check JS</button>-->
+</div>
+</center>
+
+{% endblock %}
+
+

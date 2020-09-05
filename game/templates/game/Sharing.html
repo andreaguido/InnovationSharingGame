@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+Would you like to share the innovation with your neighbours?
+<br>
+{% formfield player.share_decision %}
+
+    {% next_button %}
+{% endblock %}
+
+

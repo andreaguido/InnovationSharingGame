@@ -1,0 +1,85 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+
+<style>
+.otree-title{
+  font-weight: bold;
+  text-align:center;
+}
+
+.otree-body{
+    /*max-width:100%;*/
+    /*background: url("{% static "wood.jpg" %}");*/
+
+    }
+div.background {
+
+}
+
+div.transbox{
+margin:30px;
+padding:10px;
+background-color: #ffffff;
+border: 1px solid black;
+/*opacity:0.6;*/
+/*filter: alpha(opacity=60);*/ /* For IE8 and earlier */
+  border-radius: 10px;
+
+}
+
+div.transbox p {
+  margin: 5%;
+  color: #000000;
+}
+
+ul {
+  margin:30px;
+  padding:10px;
+  margin-top:0;
+  margin-left: 5%;
+  color: #000000;
+}
+
+</style>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="transbox">
+        <h3 align="center">Vos Gains</h3>
+    <p class="transbox">
+        <p style="margin:10px;padding-left:3%;">Votre gain final après les 50 périodes dépendra :</p>
+
+        <ul>
+        <li>du nombre de points (score) que vous aurez cumulés pendant l’expérience</li>
+        <li>ainsi que de votre position finale dans un classement réalisé à la fin de l'expérience avec tous les
+            participants.
+            Vous obtiendrez X points (Or percentage:::) pour chaque position gagnée. Ces points viendront se rajouter a vos points cumulés
+            pendant l'expérience
+            <!--Plus votre position dans le classement final sera élevée, plus vous gagnerez de points qui
+            viendront se rajouter à vos points cumulés pendant l’expérience.--></li>
+    </ul>
+
+
+<p style = "margin:10px;padding-left:3%;">Les points seront convertis en euros selon un taux de conversion qui vous sera
+    communiqué à la fin de l’expérience.</p>
+
+
+</div>
+
+<br>
+
+<center>
+    <button class = "btn btn-primary btn-large">Suivant</button>
+</center>
+
+{% endblock %}
+
+

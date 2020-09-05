@@ -1,0 +1,222 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+<style>
+.otree-title{
+text-align:center;
+
+}
+
+.otree-timer{
+position : relative;
+top: 50px;
+left: 90%;
+background-color: 	#45221;
+width: 90px;
+}
+
+.page-header {
+    padding-top: 20px;
+}
+
+div h4{
+  font-family: OpenSans-Regular;
+  font-size: 30px;
+  color: #000000;
+}
+#bigtransbox{
+    position: relative;
+    bottom:0px;
+    width:auto;
+    height:auto;
+
+}
+
+#transbox{
+    position:relative;
+    bottom:380px;
+    width:700px;
+    right: 130px;
+    height:300px;
+    padding:30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 30px;
+    display:inline-block;
+
+
+}
+
+#transbox2{
+    position:relative;
+    width:530px;
+    left: 600px;
+    height:auto;
+    text-align:center;
+    padding:10px;
+    margin-top:40px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+#transbox21{
+    position:relative;
+    width:500px;
+    left: 0px;
+    top:auto;
+    height:auto;
+    text-align:center;
+    padding:10px;
+    background-color: #ffffff;
+    border: 0px solid black;
+    border-radius: 30px;
+}
+#transbox22{
+    width:500px;
+    left: 0px;
+    bottom:340px;
+    height:auto;
+    text-align:center;
+    padding:10px;
+    background-color: #ffffff;
+    border: 0px solid black;
+    border-radius: 30px;
+}
+
+#picture_user, #picture_idea, #picture_share {
+    position: relative;
+    left:0px;
+    border: 1px solid black;
+    border-radius: 30px;
+    padding:10px;
+    display: inline-block;
+}
+#text1, #text2, #text3 {
+    position: relative;
+    left:0px;
+    border: 0px solid black;
+    border-radius: 30px;
+    padding:10px;
+    margin-bottom:20px;
+}
+
+#textA {
+    position:relative;
+    bottom:20px;
+    width:auto;
+    text-align: justify;
+    border: 0px solid black;
+    padding:0px;
+}
+
+#textB {
+    position:relative;
+    bottom:1px;
+    width:auto;
+    text-align: justify;
+    border: 0px solid black;
+    padding:0px;
+}
+
+#picture_user, #picture_idea, #picture_share{
+    width:100px;
+}
+#next_button {
+    position:relative;
+    bottom:300px;
+    right:30%;
+    display: inline-block;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+</style>
+{% endblock %}
+
+{% block title %}
+Partage d’ingrédient bonus
+{% endblock %}
+
+{% block content %}
+        <div id="transbox2">
+
+        <div id ="transbox22">
+        <div id="picture_user">
+            {% if treatment == "P" and degree == 2 %}
+            <div id="">
+                <img src="{% static "others/user_2.png" %}" alt="">
+            </div>
+                {% elif treatment == "P" and degree == 4 %}
+            <div id="">
+                <img src="{% static "others/user_4.png" %}" alt="">
+            </div>
+                {% elif treatment == "S" and degree == 2 %}
+            <div id="">
+                <img src="{% static "others/unknown_user_2.png" %}" alt="">
+            </div>
+                {% else %}
+            <div id="">
+                <img src="{% static "others/unknown_user_4.png" %}" alt="">
+            </div>
+                {% endif %}
+
+        </div>
+        <div id="text1">Vous étes connecté(e)
+                {% if treatment == "P" %} <b>aux mêmes
+                {% if degree == 2 %} 2 </b>{% else %} 4 </b>{% endif %}
+            {% else %} à
+                {% if degree == 2 %} <b>2</b> {% else %} <b>4</b> {% endif %}
+            {% endif %}
+            chercheurs {% if treatment != "P" %} <b>différents</b> {% endif %}</div>
+            <p style="text-align:left">Parmi eux:</p>
+        <div id="picture_idea">
+              {% if degree == 2 %}
+            <img src="{% static "others/idea22.png" %}" alt="">
+            {% else %}
+            <img src="{% static "others/idea42.png" %}" alt="">
+            {% endif %}
+        </div>
+        <div id="text2"><b>2</b> ont trouvé un ingrédients bonus</div>
+        <div id="picture_share">
+              {% if degree == 2 %}
+            <img src="{% static "others/share21.png" %}" alt="">
+            {% else %}
+            <img src="{% static "others/share41.png" %}" alt="">
+            {% endif %}
+        </div>
+        <div id="text3"><b>1</b> a decidé de partager son ingrédient bonus</div>
+
+
+    </div>
+    </div>
+        <div id="transbox">
+            <div id = "textB">
+                Au sein de la communauté, vous serez connecté(e)
+            {% if treatment == "P" %} <b>aux mêmes
+                {% if degree == 2 %} 2 </b>{% else %} 4 </b>{% endif %}
+            {% else %} à
+                {% if degree == 2 %} <b>2</b> {% else %} <b>4</b> {% endif %}
+            {% endif %}
+            <b>chercheurs</b> {% if treatment != "P" %} <b>différents</b> {% endif %}
+            à chaque nouvelle période.
+            Lors de cette expérience, vous ne pourrez partager et recevoir des ingrédients bonus
+            que de la part de ces chercheurs.
+            <br><br>
+            A la fin de chaque période, vous découvrirez le nombre de chercheurs qui ont découvert un ingrédient bonus
+            et leur décision de le partager ou pas.
+            <br><br>
+            </div>
+        </div>
+
+    <button id = "next_button" class="btn btn-primary btn-large">Suivant</button>
+
+{% endblock %}
+
+

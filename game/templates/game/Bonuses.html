@@ -1,0 +1,82 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+
+<style>
+.otree-title{
+  font-weight: bold;
+  text-align:center;
+}
+
+.otree-body{
+/*    max-width:100%;*/
+/*    background: url("{% static "wood.jpg" %}");*/
+
+    }
+div.background {
+
+}
+
+div.transbox{
+margin:30px;
+padding:10px;
+background-color: #ffffff;
+border: 1px solid black;
+/*opacity:0.6;
+filter: alpha(opacity=60); */ /* For IE8 and earlier */
+  border-radius: 10px;
+
+}
+
+div.transbox p {
+  margin: 5%;
+  color: #000000;
+}
+
+ul {
+  margin:30px;
+  padding:10px;
+  margin-top:0;
+  margin-left: 5%;
+  color: #000000;
+}
+
+</style>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="transbox">
+        <h3 align="center">Capsules</h3>
+<p>Chaque combinaison, une fois validée, produit un score (un nombre de points) différent. Certaines combinaisons,
+        assez rares, permettent de réaliser des avancées majeures dans la recherche du remède. Concrètement, elles vous permettent
+        de trouver des capsules, représentées par des images comme ci-dessous: <br></p>
+    <center>
+        <img src="{% static "b1.png" %}" alt="" width = "40px">
+    </center>
+        <p>
+        Trouver une capsule vous permettra d’augmenter le nombre de points que vous obtiendrez pour toutes les
+        combinaisons qui suivront (lors des périodes suivantes). A chaque période, les combinaisons qui produisent
+        une capsule sont différentes.
+        </p>
+
+
+
+
+</div>
+
+<br>
+
+<center>
+    <button class = "btn btn-primary btn-large">Suivant</button>
+</center>
+
+{% endblock %}
+
+

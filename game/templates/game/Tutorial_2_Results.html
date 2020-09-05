@@ -1,0 +1,337 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+<style>
+.otree-title{
+text-align:center;
+
+}
+
+.otree-timer{
+position : relative;
+top: 50px;
+left: 90%;
+background-color: 	#45221;
+width: 90px;
+}
+
+html{
+    /*background-image: url("{% static "wood.jpg" %}");*/
+}
+
+.arrow {
+height:auto;
+width:20%;
+}
+.otree-body {
+/*max-width:100%;
+background-image: url("{% static "wood.jpg" %}");*/
+
+}
+
+.page-header {
+    padding-top: 20px;
+}
+
+table {
+  border-spacing: 1;
+  border-collapse: inherit;
+  background: white;
+  overflow: hidden;
+  width: 40%;
+  margin: 0 auto;
+  position: relative;
+  left: 380px;
+  border: 1px solid black;
+  border-radius: 10px;
+  opacity:1;
+}
+
+
+
+table td, table th {
+    width: 100px;
+      text-align: center;
+
+}
+
+
+tbody tr {
+  font-family: OpenSans-Regular;
+  font-size: 30px;
+  color:;
+  line-height: 1.8;
+  font-weight: unset;
+}
+
+div h4{
+  font-family: OpenSans-Regular;
+  font-size: 30px;
+  color: #000000;
+}
+
+#transbox{
+    position:relative;
+    bottom:100px;
+    width:700px;
+    right: 100px;
+    height:190px;
+    padding:10px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 30px;
+
+}
+
+#transbox2{
+    position:relative;
+    visibility:hidden;
+    bottom:210px;
+    width:300px;
+    left: 700px;
+    height:auto;
+    text-align:center;
+    padding:10px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+#transbox3{
+    position:relative;
+    visibility:hidden;
+    bottom:210px;
+    width:300px;
+    left: 700px;
+    height:auto;
+    text-align:center;
+    padding:10px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+/*#text12, #text22, #text32{
+    position:relative;
+    bottom:0px;
+    width:200px;
+    display: inline-block;
+    text-align: center;
+    border: 0px solid black;
+
+}*/
+#text33 {
+    position:relative;
+    bottom:180px;
+    width:auto;
+    text-align: justify;
+    border: 0px solid black;
+    visibility:hidden;
+    padding:30px;
+}
+
+#text42 {
+    position:absolute;
+    bottom:30px;
+    width:auto;
+    text-align: justify;
+    border: 0px solid black;
+    padding:10px;
+
+}
+
+#info_button, #info_button_2, #next_button {
+    position:relative;
+    bottom:0%;
+    display: inline-block;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+</style>
+
+<script>
+
+var step=1;
+
+    function sharingdecision(ciao){
+        document.getElementById("id_share_decision").value= ciao;
+    }
+
+    function slide(){
+        step = step + 1;
+        if (step == 2) {
+        document.getElementById("text2").style.visibility = "visible";
+        document.getElementById("text21").style.visibility = "visible";
+        document.getElementById("text22").style.visibility = "visible";
+        document.getElementById("info_button_2").style.visibility = "visible";
+        };
+        if (step == 3) {
+        document.getElementById("text3").style.visibility = "visible";
+        document.getElementById("text31").style.visibility = "visible";
+        document.getElementById("text32").style.visibility = "visible";
+        };
+        if (step == 4) {
+        document.getElementById("text33").style.visibility = "visible";
+        document.getElementById("text12").style.visibility = "hidden";
+        document.getElementById("text22").style.visibility = "hidden";
+        document.getElementById("text32").style.visibility = "hidden";
+        document.getElementById("title1").style.visibility= "hidden";
+        document.getElementById("title2").style.visibility= "visible";
+        };
+        if (step == 5) {
+        document.getElementById("text33").style.visibility = "hidden";
+        document.getElementById("text42").style.visibility = "visible";
+        document.getElementById("transbox2").style.visibility = "visible";
+        document.getElementById("transbox3").style.visibility = "visible";
+        document.getElementById("info_button").style.visibility = "hidden";
+        document.getElementById("next_button").style.visibility = "visible";
+        document.getElementById("score_table").style.opacity = 0.2;
+        document.getElementById("title2").style.visibility= "hidden";
+        document.getElementById("title3").style.visibility= "visible";
+        };
+    }
+
+    function slide_back(){
+        step =step -1;
+
+        if (step == 1) {
+        document.getElementById("text2").style.visibility = "hidden";
+        document.getElementById("text21").style.visibility = "hidden";
+        document.getElementById("text22").style.visibility = "hidden";
+        document.getElementById("info_button_2").style.visibility = "hidden";
+        };
+        if (step == 2) {
+        document.getElementById("text12").style.visibility = "visible";
+        document.getElementById("text2").style.visibility = "visible";
+        document.getElementById("text21").style.visibility = "visible";
+        document.getElementById("text22").style.visibility = "visible";
+        document.getElementById("text3").style.visibility = "hidden";
+        document.getElementById("text31").style.visibility = "hidden";
+        document.getElementById("text32").style.visibility = "hidden";
+
+        };
+        if (step == 3) {
+        document.getElementById("text12").style.visibility = "visible";
+        document.getElementById("text2").style.visibility = "visible";
+        document.getElementById("text21").style.visibility = "visible";
+        document.getElementById("text22").style.visibility = "visible";
+        document.getElementById("info_button").style.visibility = "visible";
+        document.getElementById("text3").style.visibility = "visible";
+        document.getElementById("text31").style.visibility = "visible";
+        document.getElementById("text32").style.visibility = "visible";
+        document.getElementById("text42").style.visibility = "hidden";
+        document.getElementById("transbox2").style.visibility = "hidden";
+        document.getElementById("transbox3").style.visibility = "hidden";
+        document.getElementById("next_button").style.visibility = "hidden";
+        document.getElementById("text33").style.visibility = "hidden";
+        document.getElementById("score_table").style.opacity = 1;
+        document.getElementById("title1").style.visibility= "visible";
+        document.getElementById("title2").style.visibility= "hidden";
+
+
+        };
+        if (step == 4) {
+        document.getElementById("text33").style.visibility = "visible";
+        document.getElementById("text12").style.visibility = "hidden";
+        document.getElementById("text22").style.visibility = "hidden";
+        document.getElementById("text32").style.visibility = "hidden";
+        document.getElementById("text42").style.visibility = "hidden";
+        document.getElementById("transbox2").style.visibility = "hidden";
+        document.getElementById("transbox3").style.visibility = "hidden";
+        document.getElementById("info_button").style.visibility = "visible";
+        document.getElementById("next_button").style.visibility = "hidden";
+        document.getElementById("transbox").style.height = "180px";
+        document.getElementById("title2").style.visibility= "visible";
+        document.getElementById("title3").style.visibility= "hidden";
+
+        };
+       }
+    function get_value_form(sharedecision) {
+      document.getElementById("id_share_decision").value = sharedecision;
+    }
+
+
+</script>
+{% endblock %}
+
+{% block title %}
+<div id="title1" style="visibility:visible">Score</div>
+<div id="title2" style="visibility:hidden; position:relative;top:-40px;left:px;">Gains</div>
+<div id="title3" style="visibility:hidden; position:relative;top:-60px;left:px;">Ingrédients bonus</div>
+
+{% endblock %}
+
+{% block content %}
+<table id="score_table">
+    <thead>
+        <tr class="table100-head">
+    <th>Score</th>
+    <th id="text2" style="visibility:hidden">Score Cumulé</th>
+    <th id="text3" style="visibility:hidden">Rang</th>
+</tr>
+        <tbody>
+    <tr>
+        <th>11</th>
+        <th id="text21" style="visibility:hidden">11</th>
+        <th id="text31" style="visibility:hidden">
+            <img class = "arrow" src="{% static "others/UP.png" %}">
+    </tr>
+
+</tbody>
+</table>
+<br>
+<div id="transbox">
+    <ul>
+    <li id="text12">Après chaque essai, un <b>score</b> sera attribué à votre remède.</li>
+    <li id="text22" style="visibility:hidden">L’addition de vos scores obtenus à chacune des périodes détermine votre <b>score cumulé</b>.   </li>
+    <li id="text32" style="visibility:hidden">L’évolution de votre score cumulé détermine votre rang dans le classement des chercheurs.
+        Une flèche verte indique que vous progressez dans le <b>classement des chercheurs</b>,
+        tandis qu’une flèche rouge indique que vous régressez. Votre rang exact ne sera connu qu’à la fin de l’expérience. </li>
+    </ul>
+    <div id="text33">
+            Votre <b>score cumulé</b> et votre <b>rang</b> dans le classement des chercheurs détermineront vos gains à la fin de l’expérience.
+        <br><br>
+            Votre score cumulé déterminera <b>50%</b> de vos gains.
+        Les <b>50%</b> restant seront déterminées par votre rang dans le classement des chercheurs.
+
+    </div>
+    <div id="text42" style="visibility:hidden">
+Certaines combinaisons d'ingrédients permettent de réaliser des avancées majeures dans la production de remèdes. Ces combinaisons vous
+        donnent accès à des <b>ingrédients bonus</b> qui rendent l’ensemble de vos remèdes <b>plus efficaces</b>.
+        <br>
+        Lorsque vous découvrez des ingrédients
+        bonus, ceux-ci seront <b>automatiquement ajoutés</b> à votre remède.
+    </div></div>
+<br>
+<div id = "transbox2">
+    Félicitations! Vous avez trouvé un <b>ingrédient bonus</b>! <br><br>
+
+    <div><img src="{% static "capsules/b1.png"%}" alt="" width="20px"></div>
+
+</div>
+
+<div id = "transbox3">
+
+    <div><img src="{% static "others/blender_bonus.png"%}" alt=""></div>
+
+</div>
+
+<div style="border: 0px solid black; width:900px; height:100px;position:relative;right:150px;bottom:500px;">
+    <input id = "info_button" type="button" class="btn btn-primary btn-large" onclick="slide()" value = "Info Suivante"
+    style="position:relative; left:40%"></input>
+
+    <input id = "info_button_2" type="button" class="btn btn-primary btn-large" onclick="slide_back()" value = "Info Précédente"
+    style="position:relative; left:5%; visibility:hidden"></input>
+
+    <button id = "next_button" class="btn btn-primary btn-large" style="visibility:hidden;
+            position:relative; left:29%;">Suivant</button>
+</div>
+
+{% endblock %}
+
+

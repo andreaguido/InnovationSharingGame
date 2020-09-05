@@ -1,0 +1,88 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+
+<style>
+.otree-title{
+  font-weight: bold;
+  text-align:center;
+}
+
+.otree-body{
+/*    max-width:100%;
+    background: url("{% static "wood.jpg" %}");*/
+
+    }
+div.background {
+
+}
+
+div.transbox{
+margin:30px;
+padding:0;
+background-color: #ffffff;
+border: 1px solid black;
+/*opacity:0.6;
+filter: alpha(opacity=60);*/ /* For IE8 and earlier */
+  border-radius: 10px;
+
+}
+
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
+
+div.pic {
+    margin:0px;
+    opacity: 1 !important;
+    background:  black !important;
+
+    }
+
+img{
+width:50px;
+border: 0px solid black;
+  border-radius: 10px;
+
+}
+
+</style>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="transbox">
+        <h3 align="center">Partage des capsules</h3>
+    <p class="transbox">
+Si vous trouvez une capsule, vous pourrez en faire bénéficier deux autres participants.<br><br>
+
+Ces deux autres participants seront les mêmes personnes tout au long de l’expérience.
+        Ils/elles pourront également décider s’ils souhaitent vous faire bénéficier des capsules
+        qu’ils/elles trouveront. Pour rappel, chaque capsule trouvée permet d’augmenter le nombre de
+        points pour toutes les combinaisons qui suivront (pour celui/celle qui trouve la capsule mais
+        aussi pour les autres participants, si celui/celle qui trouve la capsule décide d’en faire bénéficier
+        les autres également).
+<br> <br>
+Vous serez informé(e) après chaque période du nombre de capsules trouvées par les deux autres participants auxquels
+        vous êtes associé(e) ainsi que de leur décision de les partager ou pas avec vous.
+</p>
+    </div>
+
+
+<br>
+
+<center>
+    <button class = "btn btn-primary btn-large">Suivant</button>
+</center>
+
+{% endblock %}
+
+

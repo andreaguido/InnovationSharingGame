@@ -1,0 +1,76 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+
+<style>
+.otree-title{
+  font-weight: bold;
+  text-align:center;
+}
+
+.otree-body{
+    /*max-width:100%;*/
+    /*background: url("{% static "wood.jpg" %}");*/
+
+    }
+div.background {
+
+}
+
+div.transbox{
+margin:30px;
+padding:0;
+background-color: #ffffff;
+border: 1px solid black;
+/*opacity:0.6;*/
+/*filter: alpha(opacity=60); */ /* For IE8 and earlier */
+  border-radius: 10px;
+
+}
+
+div.transbox p {
+  margin: 5%;
+  color: #000000;
+}
+
+div.pic {
+    margin:0px;
+    opacity: 1 !important;
+    background:  black !important;
+
+    }
+
+img{
+width:auto;
+border: 1px solid black;
+  border-radius: 10px;
+
+}
+
+</style>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="transbox">
+        <h3 align="center">Bienvenue</h3>
+    <p class="transbox">
+    Merci de participer à cette expérience. <br>
+    Pour cette expérience, nous vous demandons d’imaginer le scénario suivant: Vous être un chercheur en sciences
+        médicales et devez chaque jour produire un remède afin de lutter contre un nouveau virus.
+    </p>
+    </div>
+
+<center>
+    <button class = "btn btn-primary btn-large">Suivant</button>
+</center>
+
+{% endblock %}
+
+

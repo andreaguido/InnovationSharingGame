@@ -1,0 +1,104 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+<style>
+.otree-title{
+text-align:center;
+
+}
+
+.otree-timer{
+position : relative;
+top: 50px;
+left: 90%;
+background-color: 	#45221;
+width: 90px;
+}
+
+img{
+    width:100%;
+}
+
+.page-header {
+    padding-top: 20px;
+}
+
+
+#transbox{
+    position:relative;
+    top:30px;
+    width:auto;
+    height:120px;
+    padding:10px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 30px;
+    text-align:justify;
+
+}
+
+#transbox2{
+    position:relative;
+    width:100px;
+    left: 90%;
+    height:auto;
+    text-align:justify;
+    padding:8px;
+    background-color: #ffffff;
+    border: 2px solid yellow;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+#picture_user, #picture_idea, #picture_share {
+    position: relative;
+    left:0px;
+    border: 1px solid black;
+    border-radius: 30px;
+    padding:10px;
+    display: inline-block;
+}
+#text1, #text2, #text3 {
+    position: relative;
+    left:0px;
+    border: 0px solid black;
+    border-radius: 30px;
+    padding:10px;
+    margin-bottom:20px;
+}
+#picture_user, #picture_idea, #picture_share{
+    width:100px;
+}
+#next_button {
+    position:relative;
+    margin:50px;
+    bottom:auto;
+    text-align: center;
+}
+</style>
+
+{% endblock %}
+
+{% block title %}
+Bonne chance
+{% endblock %}
+
+{% block content %}
+
+    <div id="transbox2">
+        <img src="{% static "others/timer.png" %}" alt="">
+    </div>
+    <div id="transbox">
+        Les instructions sont terminées. Lorsque l’expérience aura commencé vous aurez 30 secondes pour prendre
+        chacune de vos décisions.
+        Un chronomètre placé en haut à droite de votre écran vous permettra de surveiller le temps imparti. <br>
+        Cliquez sur « Commencer l’expérience » pour débuter.
+</div>
+
+<center>
+    <button id="next_button" class = "btn btn-primary btn-large">Commencer l’expérience</button>
+</center>
+{% endblock %}
+
+
